@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Mid</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,900&display=swap');
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow: hidden;
+    }
+
+    body {
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #738ADB;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 5vmin;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    h1 {
+        color: #5865F2;
+    }
+
+    h6 {
+        text-align: center;
+        color: whitesmoke;
+    }
+
+    .backgroundContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        transform-origin: top center;
+        position: absolute;
+        top: 0;
+    }
+
+    .backgroundRow {
+        display: flex;
+        gap: 1em;
+        animation: slide 200s infinite linear;
+    }
+
+    .background {
+        opacity: 0.2;
+        white-space: nowrap;
+    }
+
+    .hidden {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    img {
+        width: 30px;
+        position: absolute;
+        top: 60px;
+        left: 60px;
+    }
+
+    @keyframes slide {
+        to {
+            transform: translateX(50%);
+        }
+    }
+
+    @keyframes slide2 {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .backgroundContainer .backgroundRow:nth-child(2n) {
+        animation: slide2 200s infinite linear;
+    }
+
+</style>
+<body>
+    <div class="backgroundContainer"></div>
+    <div class="background hidden">DISCORD MID</div>
+    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"><img src="icon_clyde_blurple_RGB.png"/></a>
+    <div class="container">
+        <h1>DISCORD MID</h1>
+        <h6>- DXXMSDAI</h2>
+    </div>
+
+    <script>
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const word = "DISCORD MID";
+        const backgroundWidth = document.querySelector('.background').getBoundingClientRect().width;
+        const backgroundHeight = document.querySelector('.background').getBoundingClientRect().height;
+        const columns = Math.ceil(windowWidth / backgroundWidth);
+        const rows = Math.ceil(windowHeight / backgroundHeight);
+
+        const insertBackground = () => {
+        const root = document.querySelector('.backgroundContainer');
+        for(let i = 0; i < rows; i++) {
+            const containerRow = document.createElement('div');
+            containerRow.classList.add("backgroundRow");
+            for(let j = 0; j < columns * 10; j++) {
+            const backgroundDiv = document.createElement('div');
+            backgroundDiv.classList.add('background');
+            backgroundDiv.innerText = word;
+            containerRow.appendChild(backgroundDiv);
+            }
+            root.appendChild(containerRow);
+        }
+        
+        console.log('resize triggered!')
+        }
+
+        insertBackground()
+    </script>
+</body>
+</html>
